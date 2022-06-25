@@ -4,7 +4,7 @@ Azure App Services allow you to host your web applications, APIs and backends in
 
 In version 3.0 of the AzureRM Provider for Terraform, the azurerm_app_service resource was deprecated and will be completely removed in version 4.0. It has been replaced by 2 new resources. *azurerm_linux_web_app* and *azurerm_windows_web_app*. 
 
-In this tutorial, you'll learn how to deploy a Linux App Service running a  Hello World container.
+In this tutorial, you will learn how to deploy a Linux Web App running a  Hello World container.
 
 # Prerequisites
 
@@ -63,7 +63,7 @@ Under *main.tf*, there are 3 resources that need to be created:
 2. An *App Service Plan*
 3. A *Resource Group* where the resources will be stored
 
-The code below will deploy a Resource Group to the EastUS2 region in Azure, a Linux App Service Plan, and a Linux Web App running a *python-helloworld* container.
+The code below will deploy a Resource Group to the EastUS2 region in Azure, a Linux App Service Plan, and a Linux Web App running a [Python hello World container from Docker Hub](https://hub.docker.com/r/appsvcsample/python-helloworld).
 
 Copy and paste the following code into the *main.tf* file then save the changes.
 
