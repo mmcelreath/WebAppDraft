@@ -67,6 +67,8 @@ The code below will deploy a Resource Group to the EastUS2 region in Azure, a Li
 
 Copy and paste the following code into the *main.tf* file then save the changes.
 
+> Note: Web App/App Service names need to be globally unique across all of Azure in order to be able to resolve it's URL. Replace `<app-name`> in the following code with something that is unique.
+
 ```
 resource "azurerm_resource_group" "app-rg" {
   name     = "app-rg-01"
@@ -84,7 +86,7 @@ resource "azurerm_service_plan" "asp_linux" {
 }
 
 resource "azurerm_linux_web_app" "as_linux" {
-  name                = "app-linux-01"
+  name                = "<app-name>"
   location            = azurerm_resource_group.app-rg.location
   resource_group_name = azurerm_resource_group.app-rg.name
   service_plan_id     = azurerm_service_plan.asp_linux.id
