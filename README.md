@@ -2,7 +2,7 @@
 
 Azure App Services allow you to host your web applications, APIs and backends in an environment that offers security, scaling, and load balancing without the need to host your own physical hardware, making them ideal for developers looking to hit the ground running.
 
-In version 3.0 of the AzureRM Provider for Terraform, the azurerm_app_service resource was deprecated and will be completely removed in version 4.0. It has been replaced by 2 new resources. azurerm_linux_web_app and azurerm_windows_web_app. 
+In version 3.0 of the AzureRM Provider for Terraform, the azurerm_app_service resource was deprecated and will be completely removed in version 4.0. It has been replaced by 2 new resources. *azurerm_linux_web_app* and *azurerm_windows_web_app*. 
 
 In this tutorial, you'll learn how to deploy a Linux App Service running a  Hello World container.
 
@@ -11,27 +11,32 @@ In this tutorial, you'll learn how to deploy a Linux App Service running a  Hell
 In this hands-on tutorial, to follow along, you will need to have the following:
 
 - An Azure Subscription - If you do not have an account with Microsoft Azure, you can sign up to [Try Azure for Free](https://azure.microsoft.com/en-us/free/).
-- Terraform
-- Visual Studio Code (VSCode) - Any IDE you feel comfortable with is fine. For this tutorial, I will be using VSCode.
+- [Terraform CLI](https://www.terraform.io/)
+- Azure CLI - [How to install the Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
+
+# Installing Prerequisites with Chocolatey
+
+Prerequisites can be installed manually or by running the following commands with [Chocolatey](https://chocolatey.org/install)
+
+```
+choco install terraform
+choco install azure-cli
+```
 
 # Setting up the Terraform Working Directory
 
 First, Terraform will need a directory to run from that contains the configuration files. Choose a location where you would like to put this directory and create a folder called *Terraform_App_Service*.
-
-![Create Terraform working directory](./images/TerraformFolder.png)
-
-Once that folder is created, open the folder in VSCode (or other IDE).
-
-![Open folder in VSCode](./images/OpenTerraformFolder.png)
 
 ```
 mkdir ~/Terraform_App_Service
 cd ~/Terraform_App_Service
 ```
 
-In the *Terraform_App_Service*, create 2 files which will host the configuration:
-- main.tf - This will host the resources....
-- versions.tf - For specifying Terraform provider information
+In the *Terraform_App_Service* folder, create 2 files which will host the configuration:
+- main.tf
+- versions.tf
+
+The *main.tf* file is going to be the "main" part of the configuration, containing the resources for the new Web App.
 
 The *versions.tf* file is going to host the provider details for the AzureRM Terraform Provider. Check out the [AzureRM Terraform Provider Overview Page](https://registry.terraform.io/providers/hashicorp/azurerm/latest) to find the most recent version available.
 
@@ -95,8 +100,7 @@ resource "azurerm_linux_web_app" "as_linux" {
   }
 }
 ```
-
-Once both *main.tf* and *versions.tf* have both been saved, it's time to initialize the Terraform working directory and apply the configuration.
+After both *main.tf* and *versions.tf* have both been saved, it's time to initialize the Terraform working directory and apply the configuration.
 
 ```
 cd ~/Terraform_App_Service
